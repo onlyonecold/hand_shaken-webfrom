@@ -1,0 +1,136 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="HandServer.Master.cs" Inherits="hand_shaken_webform.Hand_server_view" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <style>
+        .dropdown-item {
+            display: block;
+            width: 100%;
+            padding: .25rem 1.5rem;
+            clear: both;
+            font-weight: 400;
+            color: #212529;
+            text-align: inherit;
+            white-space: nowrap;
+            background-color: transparent;
+            border: 0;
+        }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> 手搖飲品管理系統</title>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+         <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:ContentPlaceHolder>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/img/icon2.png" rel="shortcut icon" type="image/x-icon" />
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <img style="width:60px" src="/img/icon2.png"/>
+                    <a class="navbar-brand" runat="server">手搖飲品管理系統</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >訂單管理</a>
+                            <div class="dropdown-menu">
+                               <a  class="dropdown-item" href="AddOrder">新增訂購單</a>
+                               <a  class="dropdown-item" href="OrderViewByBackstage">檢視訂購單(後台)</a>
+                                <a  class="dropdown-item" href="OrderViewByFrontDesk">檢視訂購單(前台)</a>
+                            </div>
+                        </li>
+                         <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >庫存管理</a>
+                            <div class="dropdown-menu">
+                              <a  class="dropdown-item" href="/">原物料管理</a>
+                              <a  class="dropdown-item" href="/">領貨單管理</a>
+                              <a  class="dropdown-item" href="/">領貨單審核</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >進貨管理</a>
+                            <div class="dropdown-menu">
+                              <a  class="dropdown-item">進貨單管理</a>
+                              <a  class="dropdown-item">進貨單審核</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >報表管理</a>
+                            <div class="dropdown-menu">
+                                <a  class="dropdown-item">產品銷售熱門統計表</a>
+                                <a  class="dropdown-item">產品類別銷售熱門統計表</a>
+                                <a  class="dropdown-item">產品營業額統計表</a>
+                                <a  class="dropdown-item">產品利潤統計表</a>
+                                <a  class="dropdown-item">產品製作時效統計表</a>
+                                <a  class="dropdown-item">產品銷售時段統計表</a>
+                                <a  class="dropdown-item">產品銷售季節統計表</a>
+                                <a  class="dropdown-item">產品忠誠度年齡統計表</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">系統管理</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item">產品類別管理</a>
+                                <a class="dropdown-item">產品管理</a>
+                                <a class="dropdown-item" href="SysUser">員工管理</a>
+                                <a class="dropdown-item">會員管理</a>
+                               
+                            </div>
+                        </li>  
+                        <li class="nav-item dropdown">
+                             <a class="dropdown-item" href="Default">學生管理系統</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+                             <asp:LinkButton runat="server" Text="登出" OnCommand="Sing_Out"/>
+                        </li>
+                    </ul>
+                    <div>
+                        <asp:LoginName id="name" runat="server" />
+
+                        <%--<asp:Label runat="server" ID="loginName"></asp:Label>--%>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - 我的 ASP.NET  應用程式</p>
+            </footer>
+        </div>
+
+    </form>
+</body>
+</html>

@@ -5,29 +5,29 @@
     <h3>訂單管理/新增訂購單</h3>
     <hr>
     <div class="row" style="margin-top: 5px;">
-         <h3 class="text-center col-lg-offset-0 thumbnail" style="background-color:cadetblue;color:white;margin-bottom:5px;margin-top:0px">商品類別</h3>
+        <h3 class="text-center col-lg-offset-0 thumbnail" style="background-color: cadetblue; color: white; margin-bottom: 5px; margin-top: 0px">商品類別</h3>
         <div class="col-lg-2">
-            <asp:Button ID="productClass1"  Text="牧場鮮奶茶" style="width: 180px;height: 100px;font-size:20px" runat="server" CssClass="btn btn-info" CommandArgument="1" OnCommand="Product_Item"/>
+            <asp:Button ID="productClass1" Text="牧場鮮奶茶" Style="width: 180px; height: 100px; font-size: 20px" runat="server" CssClass="btn btn-info" CommandArgument="1" OnCommand="Product_Item" />
         </div>
         <div class="col-lg-2">
-            <asp:Button ID="productClass2"  Text="愛喝的牛" style="width: 180px;height: 100px;font-size:20px" runat="server" CssClass="btn btn-info"  CommandArgument="2" OnCommand="Product_Item"/>
+            <asp:Button ID="productClass2" Text="愛喝的牛" Style="width: 180px; height: 100px; font-size: 20px" runat="server" CssClass="btn btn-info" CommandArgument="2" OnCommand="Product_Item" />
         </div>
         <div class="col-lg-2">
-            <asp:Button ID="productClass3"  Text="六時韻"  style="width: 180px;height: 100px;font-size:20px" runat="server" CssClass="btn btn-info" CommandArgument="3" OnCommand="Product_Item" />
+            <asp:Button ID="productClass3" Text="六時韻" Style="width: 180px; height: 100px; font-size: 20px" runat="server" CssClass="btn btn-info" CommandArgument="3" OnCommand="Product_Item" />
         </div>
         <div class="col-lg-2">
-            <asp:Button ID="productClass4"  Text="綠光牧場鮮奶" style="width: 180px;height: 100px;font-size:20px" runat="server" CssClass="btn btn-info" CommandArgument="4" OnCommand="Product_Item" />
+            <asp:Button ID="productClass4" Text="綠光牧場鮮奶" Style="width: 180px; height: 100px; font-size: 20px" runat="server" CssClass="btn btn-info" CommandArgument="4" OnCommand="Product_Item" />
         </div>
         <div class="col-lg-2">
-            <asp:Button ID="productClass5"  Text="台灣鮮豆奶" style="width: 180px;height: 100px;font-size:20px" runat="server" CssClass="btn btn-info" CommandArgument="5" OnCommand="Product_Item" />
+            <asp:Button ID="productClass5" Text="台灣鮮豆奶" Style="width: 180px; height: 100px; font-size: 20px" runat="server" CssClass="btn btn-info" CommandArgument="5" OnCommand="Product_Item" />
         </div>
         <div class="col-lg-2">
-            <asp:Button ID="productClass6"  Text="手做特調" style="width: 180px;height: 100px;font-size:20px" runat="server" CssClass="btn btn-info" CommandArgument="6" OnCommand="Product_Item" />
+            <asp:Button ID="productClass6" Text="手做特調" Style="width: 180px; height: 100px; font-size: 20px" runat="server" CssClass="btn btn-info" CommandArgument="6" OnCommand="Product_Item" />
         </div>
     </div>
     <div class="row" style="margin-top: 5px;">
         <div class="col-lg-6">
-            <h3 class="text-center col-lg-offset-0 thumbnail" style="background-color:cadetblue;color:white;margin-bottom:5px;margin-top:5px">產品項目</h3>
+            <h3 class="text-center col-lg-offset-0 thumbnail" style="background-color: cadetblue; color: white; margin-bottom: 5px; margin-top: 5px">產品項目</h3>
             <div style="overflow: auto; height: 490px">
                 <asp:GridView ID="product_Grid" runat="server" BackColor="white"
                     BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" CellPadding="4"
@@ -87,16 +87,16 @@
                     </Columns>
                 </asp:GridView>
             </div>
-            
+
         </div>
         <div class="col-lg-6">
-            <h3 class="text-center col-lg-offset-0 thumbnail" style="background-color:cadetblue;color:white;margin-bottom:5px;margin-top:5px">選擇項目</h3>
+            <h3 class="text-center col-lg-offset-0 thumbnail" style="background-color: cadetblue; color: white; margin-bottom: 5px; margin-top: 5px">選擇項目</h3>
             <div class="row" style="margin-bottom: 5px;">
                 <div class="col-lg-6">
-                    <label>客戶性別</label><asp:DropDownList ID="cust_Sex" AutoPostBack="true" runat="server" CssClass="form-control" style="display:inline;width:75%;margin-left:5px"></asp:DropDownList>
+                    <label>客戶性別</label><asp:DropDownList ID="cust_Sex" AutoPostBack="true" runat="server" CssClass="form-control" Style="display: inline; width: 75%; margin-left: 5px"></asp:DropDownList>
                 </div>
                 <div class="col-lg-6">
-                    <label>客戶年齡</label><asp:DropDownList ID="cust_Age" AutoPostBack="true" runat="server" CssClass="form-control" style="display:inline;width:75%;margin-left:5px"></asp:DropDownList>
+                    <label>客戶年齡</label><asp:DropDownList ID="cust_Age" AutoPostBack="true" runat="server" CssClass="form-control" Style="display: inline; width: 75%; margin-left: 5px"></asp:DropDownList>
                 </div>
             </div>
             <div style="overflow: auto; height: 450px">
@@ -167,39 +167,75 @@
                     </Columns>
                 </asp:GridView>
             </div>
-            
+
             <div class="text-right">
-                <button class="btn btn-danger" type="button" style="width:200px;height:50px;margin-top:5px"  data-toggle="modal" data-target="#sendBack">退貨/更改</button>
-                <asp:Button  Text="結帳" runat="server" CssClass="btn btn-success" style="width:200px;height:50px;margin-top:5px"  OnCommand="Submit_Order"/>
+                <button class="btn btn-danger" type="button" style="width: 200px; height: 50px; margin-top: 5px" data-toggle="modal" data-target="#sendBack">取消訂購單</button>
+                <asp:Button Text="結帳" runat="server" CssClass="btn btn-success" Style="width: 200px; height: 50px; margin-top: 5px" OnCommand="Submit_Order" />
             </div>
         </div>
     </div>
     <div class="modal bootstrap-dialog type-success fade in" id="sendBack" tabindex="-1" role="dialog" aria-labelledby="sendBack" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-				<h5 class="modal-title">退貨/更改</h5>
-			</div>
-			<div class="modal-body">
-				<div>
-				 	<div class="row" >
-                         <div class="form-group" style="margin-left: 20px;">
-                             <label for="orderNumber" class="form-label">請輸入單號</label>
-                             <asp:TextBox runat="server" ID="orderNumber" class="form-control" Style="display: inline"></asp:TextBox>
-                             <asp:Button type="button" runat="server" Text="查詢"  class="btn btn-primary"/>
-                         </div>
-				 	</div>
-				</div>
-			</div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title">取消訂購單</h5>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div class="row">
+                            <div class="form-group" style="margin-left: 20px;">
+                                <label for="orderNumber" class="form-label">請輸入單號</label>
+                                <asp:TextBox runat="server" ID="Order_Number" class="form-control" Style="display: inline"></asp:TextBox>
+                                <asp:Button type="button" runat="server" Text="查詢" class="btn btn-primary"  />
+                            </div>
+                            <div class="form-group" style="margin-left: 20px;">
+                                <asp:GridView ID="Send_Back_Grid" runat="server" BackColor="white"
+                                    BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" CellPadding="4"
+                                    AutoGenerateColumns="False" Width="100%" CellSpacing="5"
+                                    ForeColor="Black" GridLines="Both" HeaderStyle-Font-Bold="True" CssClass="table-bordered">
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="單號" HeaderStyle-Width="20%" ItemStyle-Width="20%" HeaderStyle-Font-Bold='false' HeaderStyle-BackColor="darkkhaki" HeaderStyle-Font-Size="15pt" HeaderStyle-CssClass="text-center" HeaderStyle-ForeColor="white">
+                                            <HeaderStyle Font-Bold="True" />
+                                            <ItemStyle HorizontalAlign='Center' VerticalAlign='Middle' BackColor="white" />
+                                            <ItemTemplate>
+                                                <asp:Label ID="prod_id" Text='<%# Eval("order_id") %>' runat="server" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="新增日期" HeaderStyle-Width="10%" ItemStyle-Width="10%" HeaderStyle-Font-Bold='false' HeaderStyle-BackColor="darkkhaki" HeaderStyle-Font-Size="15pt" HeaderStyle-CssClass="text-center" HeaderStyle-ForeColor="white">
+                                            <HeaderStyle Font-Bold="True" />
+                                            <ItemStyle HorizontalAlign='Center' VerticalAlign='Middle' BackColor="white" />
+                                            <ItemTemplate>
+                                                <asp:Label ID="size" Text='<%# Eval("create_time") %>' runat="server" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="總金額" HeaderStyle-Width="10%" ItemStyle-Width="10%" HeaderStyle-Font-Bold='false' HeaderStyle-BackColor="darkkhaki" HeaderStyle-Font-Size="15pt" HeaderStyle-CssClass="text-center" HeaderStyle-ForeColor="white">
+                                            <HeaderStyle Font-Bold="True" />
+                                            <ItemStyle HorizontalAlign='Center' VerticalAlign='Middle' BackColor="white" />
+                                            <ItemTemplate>
+                                                <asp:Label ID="price" Text='<%# Eval("total") %>' runat="server" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="功能" HeaderStyle-Width="10%" ItemStyle-Width="10%" HeaderStyle-Font-Bold='false' HeaderStyle-BackColor="darkkhaki" HeaderStyle-Font-Size="15pt" HeaderStyle-CssClass="text-center" HeaderStyle-ForeColor="white">
+                                            <HeaderStyle Font-Bold="True" />
+                                            <ItemStyle HorizontalAlign='Center' VerticalAlign='Middle' BackColor="white" />
+                                            <ItemTemplate>
+                                                <asp:Button Text="退貨" runat="server" CssClass="btn btn-primary btn-sm" CommandArgument='<%# Eval("order_id") %>' />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                </asp:GridView>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-success">確認</button>
+                </div>
             </div>
-		</div>
-	</div>
-</div>
-   
+        </div>
+    </div>
 </asp:Content>

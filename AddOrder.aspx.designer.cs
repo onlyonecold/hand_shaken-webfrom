@@ -105,12 +105,21 @@ namespace hand_shaken_webform
         protected global::System.Web.UI.WebControls.GridView add_Product_Grid;
 
         /// <summary>
-        /// orderNumber 控制項。
+        /// Order_Number 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox orderNumber;
+        protected global::System.Web.UI.WebControls.TextBox Order_Number;
+
+        /// <summary>
+        /// Send_Back_Grid 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView Send_Back_Grid;
     }
 }

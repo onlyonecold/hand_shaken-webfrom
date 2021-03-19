@@ -11,7 +11,7 @@
                 <asp:GridView ID="Order_Item_Grid" runat="server" BackColor="white"
                     BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" CellPadding="4"
                     AutoGenerateColumns="False" Width="100%" CellSpacing="5"
-                    ForeColor="Black" GridLines="Both" HeaderStyle-Font-Bold="True" CssClass="table-bordered">
+                    ForeColor="Black" GridLines="Both" HeaderStyle-Font-Bold="True" CssClass="table-bordered" EmptyDataText="查詢無資料" EmptyDataRowStyle-HorizontalAlign="Center">
                     <Columns>
                         <asp:TemplateField HeaderText="編號" HeaderStyle-Width="5%" ItemStyle-Width="8%" HeaderStyle-Font-Bold='false' HeaderStyle-BackColor="darkkhaki" HeaderStyle-Font-Size="15pt" HeaderStyle-CssClass="text-center" HeaderStyle-ForeColor="white">
                             <HeaderStyle Font-Bold="True" />

@@ -48,16 +48,21 @@ namespace hand_shaken_webform
             string sqlStr = "  select " +
                             "  order_form.order_id as order_id,"+
                             "  format(create_time, 'yyyy-MM-dd HH:mm:ss') as create_time,"+
-	                        "  dbo.getOptionNameById(status) as status,"+ 
+	                        "  dbo.getOptionNameById("+Constant.OPTION_TYPE_ORDER_STSTUS+",status) as status,"+ 
 	                        "  sum(order_detail.qty) as qty from  "+
                             "  order_form join order_detail on order_form.order_id = order_detail.order_id  "+
-                            "  where status = 17 or status = 18"+
+                            "  where status = 1 or status = 2"+
                             "  group by order_form.order_id,create_time,status  "+
                             "  order by order_id asc  ";
             orderTable = myDatabase.GetDataTable(sqlStr);
             Order_Item_Grid.DataSource = orderTable;
             Order_Item_Grid.DataBind();
+            if (orderTable.Rows.Count == 0)
+            {
+                
+            }
         }
+
 
         protected void Order_Detail_View(object sender, EventArgs e)
         {
@@ -65,8 +70,8 @@ namespace hand_shaken_webform
             String order_id = (string)viewButton.CommandArgument;
             string sqlStr = "  select product.prod_ch_name,  " +
                             "  product.size,  " +
-                            "  dbo.getOptionNameById(sugur_type) as sugur,  " +
-                            "  dbo.getOptionNameById(ice_type)as ice,qty  from order_detail " +
+                            "  dbo.getOptionNameById("+ Constant .OPTION_TYPE_SUGER+ ",sugur_type) as sugur,  " +
+                            "  dbo.getOptionNameById("+ Constant.OPTION_TYPE_ICE+",ice_type)as ice,qty  from order_detail " +
                             "  join product on product.prod_id = order_detail.prod_id  " +
                             "  where order_detail.order_id =   "+ order_id;
             orderTable = myDatabase.GetDataTable(sqlStr);
@@ -80,7 +85,7 @@ namespace hand_shaken_webform
                 string user_id = Session["user_name"].ToString();
                 Button pickupButton = (Button)sender;
                 String order_id = (string)pickupButton.CommandArgument;
-                string sqlStr = "  update order_form set status = 18 , pick_up_time = getDate(), pick_up_id = "+myDatabase.qo(user_id)+" where order_form.order_id = " + order_id;
+                string sqlStr = "  update order_form set status = 2 , pick_up_time = getDate(), pick_up_id = "+myDatabase.qo(user_id)+" where order_form.order_id = " + order_id;
                 myDatabase.execSQL(sqlStr);
                 Order_View(sender, e);
                 Order_Detail_View(sender, e);
@@ -93,7 +98,7 @@ namespace hand_shaken_webform
             {
                 Button completeButton = (Button)sender;
                 String order_id = (string)completeButton.CommandArgument;
-                string sqlStr = "  update order_form set status = 19 , complete_time = getDate() where order_form.order_id = " + order_id;
+                string sqlStr = "  update order_form set status = 3 , complete_time = getDate() where order_form.order_id = " + order_id;
                 myDatabase.execSQL(sqlStr);
                 Order_View(sender, e);
                 orderTable = null;

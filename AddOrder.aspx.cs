@@ -33,17 +33,17 @@ namespace hand_shaken_webform
             product_Grid.DataSource = productTable;
             product_Grid.DataBind();
 
-            Show_Option_Item(cust_Sex, "3");
-            Show_Option_Item(cust_Age, "4");
+            Show_Option_Item(cust_Sex, Constant.OPTION_TYPE_SEX);
+            Show_Option_Item(cust_Age, Constant.OPTION_TYPE_AGE);
             
             if (product_Grid.Rows.Count > 0)
             {
                 for (int i = 0; i < product_Grid.Rows.Count; i++)
                 {
                     DropDownList suger = (DropDownList)product_Grid.Rows[i].FindControl("suger");
-                    Show_Option_Item(suger, "1");
+                    Show_Option_Item(suger, Constant.OPTION_TYPE_SUGER);
                     DropDownList ice = (DropDownList)product_Grid.Rows[i].FindControl("ice");
-                    Show_Option_Item(ice, "2");
+                    Show_Option_Item(ice, Constant.OPTION_TYPE_ICE);
                 }
             }
         }
@@ -141,7 +141,7 @@ namespace hand_shaken_webform
                     sqlstr += " select @Form_No = isnull(max(order_id), 0) + 1 ";
                     sqlstr += " from order_form;";
                     sqlstr += " insert into order_form (order_id, created_id,status,create_time,cust_sex, cust_age) values(";
-                    sqlstr += " @Form_No,"+ myDatabase.qo(user_id) + ",17,getDate(),";
+                    sqlstr += " @Form_No,"+ myDatabase.qo(user_id) + ",1,getDate(),";
                     sqlstr += myDatabase.qo(cust_Sex.SelectedValue.ToString()) + ",";
                     sqlstr += myDatabase.qo(cust_Age.SelectedValue.ToString()) + ");";
                     sqlstr += " insert into order_detail (order_id, prod_id,qty,sugur_type,ice_type) values";
@@ -184,13 +184,28 @@ namespace hand_shaken_webform
             }
         }
 
-        private void Show_Option_Item(DropDownList dropDownList,String optionId)
+        protected void Show_Option_Item(DropDownList dropDownList,int optionId)
         {
             productTable = myDatabase.Get_Option_Item(optionId);
             dropDownList.DataTextField = "optionName";
             dropDownList.DataValueField = "id";
             dropDownList.DataSource = productTable;
             dropDownList.DataBind();
+        }
+
+        protected void Show_Send_Back(object sender, EventArgs e)
+        {
+            int order_id = int.Parse(Order_Number.Text);
+            string sqlstr = " select o.order_id,o.create_time,sum(p.price) total from order_form o　";
+            sqlstr += "  join order_detail od on o.order_id = od.order_id  ";
+            sqlstr += "  join product p on p.prod_id = od.prod_id  ";
+            sqlstr += "  where o.order_id = "+ order_id;
+            sqlstr += "  group by o.order_id,o.create_time  ";
+            productTable = myDatabase.GetDataTable(sqlstr);
+            Send_Back_Grid.DataSource = productTable;
+            Send_Back_Grid.DataBind();
+
+
         }
 
         private DataTable Order_TempTable()

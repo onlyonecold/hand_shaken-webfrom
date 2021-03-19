@@ -139,11 +139,11 @@ namespace hand_shaken_webform
             }
         }
 
-        public DataTable Get_Option_Item(string option_id)
+        public DataTable Get_Option_Item(int option_id)
         {
             SqlDataAdapter myAdapter = new SqlDataAdapter();
             myCmd.Connection = myConn;
-            myCmd.CommandText = "select id,option_name as optionName  from sys_options where sys_options.option_id ="+ option_id + "order by sys_options.option_number asc";
+            myCmd.CommandText = "select option_number as id ,option_name as optionName  from sys_options where sys_options.option_id ="+ option_id + "order by sys_options.option_number asc";
             myAdapter.SelectCommand = myCmd;
             DataTable myTable = new DataTable();
             myConn.Open();

@@ -225,6 +225,7 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constant.cs" />
     <Compile Include="SysUserCreateEdit.aspx.cs">
       <DependentUpon>SysUserCreateEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -169,73 +169,30 @@
             </div>
 
             <div class="text-right">
-                <button class="btn btn-danger" type="button" style="width: 200px; height: 50px; margin-top: 5px" data-toggle="modal" data-target="#sendBack">取消訂購單</button>
-                <asp:Button Text="結帳" runat="server" CssClass="btn btn-success" Style="width: 200px; height: 50px; margin-top: 5px" OnCommand="Submit_Order" />
+                <asp:Button CssClass="btn btn-danger" runat="server" type="button" style="width: 200px; height: 50px; margin-top: 5px" PostBackUrl="SendBackOrderView" Text="取消訂購單" />
+                <asp:Button Text="結帳" runat="server" CssClass="btn btn-success" Style="width: 200px; height: 50px; margin-top: 5px"  OnCommand="Submit_Order" />
             </div>
         </div>
     </div>
-    <div class="modal bootstrap-dialog type-success fade in" id="sendBack" tabindex="-1" role="dialog" aria-labelledby="sendBack" aria-hidden="true">
+     <div class="modal bootstrap-dialog type-success fade in" id="resMsgDialog" tabindex="-1" role="dialog" aria-labelledby="resMsgDialog" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h5 class="modal-title">取消訂購單</h5>
-                </div>
-                <div class="modal-body">
-                    <div>
-                        <div class="row">
-                            <div class="form-group" style="margin-left: 20px;">
-                                <label for="orderNumber" class="form-label">請輸入單號</label>
-                                <asp:TextBox runat="server" ID="Order_Number" class="form-control" Style="display: inline"></asp:TextBox>
-                                <asp:Button type="button" runat="server" Text="查詢" class="btn btn-primary"  />
-                            </div>
-                            <div class="form-group" style="margin-left: 20px;">
-                                <asp:GridView ID="Send_Back_Grid" runat="server" BackColor="white"
-                                    BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" CellPadding="4"
-                                    AutoGenerateColumns="False" Width="100%" CellSpacing="5"
-                                    ForeColor="Black" GridLines="Both" HeaderStyle-Font-Bold="True" CssClass="table-bordered">
-                                    <Columns>
-                                        <asp:TemplateField HeaderText="單號" HeaderStyle-Width="20%" ItemStyle-Width="20%" HeaderStyle-Font-Bold='false' HeaderStyle-BackColor="darkkhaki" HeaderStyle-Font-Size="15pt" HeaderStyle-CssClass="text-center" HeaderStyle-ForeColor="white">
-                                            <HeaderStyle Font-Bold="True" />
-                                            <ItemStyle HorizontalAlign='Center' VerticalAlign='Middle' BackColor="white" />
-                                            <ItemTemplate>
-                                                <asp:Label ID="prod_id" Text='<%# Eval("order_id") %>' runat="server" />
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="新增日期" HeaderStyle-Width="10%" ItemStyle-Width="10%" HeaderStyle-Font-Bold='false' HeaderStyle-BackColor="darkkhaki" HeaderStyle-Font-Size="15pt" HeaderStyle-CssClass="text-center" HeaderStyle-ForeColor="white">
-                                            <HeaderStyle Font-Bold="True" />
-                                            <ItemStyle HorizontalAlign='Center' VerticalAlign='Middle' BackColor="white" />
-                                            <ItemTemplate>
-                                                <asp:Label ID="size" Text='<%# Eval("create_time") %>' runat="server" />
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="總金額" HeaderStyle-Width="10%" ItemStyle-Width="10%" HeaderStyle-Font-Bold='false' HeaderStyle-BackColor="darkkhaki" HeaderStyle-Font-Size="15pt" HeaderStyle-CssClass="text-center" HeaderStyle-ForeColor="white">
-                                            <HeaderStyle Font-Bold="True" />
-                                            <ItemStyle HorizontalAlign='Center' VerticalAlign='Middle' BackColor="white" />
-                                            <ItemTemplate>
-                                                <asp:Label ID="price" Text='<%# Eval("total") %>' runat="server" />
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="功能" HeaderStyle-Width="10%" ItemStyle-Width="10%" HeaderStyle-Font-Bold='false' HeaderStyle-BackColor="darkkhaki" HeaderStyle-Font-Size="15pt" HeaderStyle-CssClass="text-center" HeaderStyle-ForeColor="white">
-                                            <HeaderStyle Font-Bold="True" />
-                                            <ItemStyle HorizontalAlign='Center' VerticalAlign='Middle' BackColor="white" />
-                                            <ItemTemplate>
-                                                <asp:Button Text="退貨" runat="server" CssClass="btn btn-primary btn-sm" CommandArgument='<%# Eval("order_id") %>' />
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                    </Columns>
-                                </asp:GridView>
-                            </div>
+            <asp:UpdatePanel ID="resMsgModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">
+                                <asp:Label ID="lblModalTitle" runat="server" Text=""></asp:Label></h4>
+                        </div>
+                        <div class="modal-body">
+                            <asp:Label ID="lblModalBody" runat="server" Text=""></asp:Label>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">關閉</button>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-success">確認</button>
-                </div>
-            </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
-    </div>
+     </div>
 </asp:Content>

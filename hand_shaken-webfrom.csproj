@@ -151,6 +151,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SendBackOrderView.aspx" />
     <Content Include="img\icon2.png" />
     <Content Include="SysUserCreateEdit.aspx" />
     <Content Include="SysUser.aspx" />
@@ -225,6 +226,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SendBackOrderView.aspx.cs">
+      <DependentUpon>SendBackOrderView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SendBackOrderView.aspx.designer.cs">
+      <DependentUpon>SendBackOrderView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Constant.cs" />
     <Compile Include="SysUserCreateEdit.aspx.cs">
       <DependentUpon>SysUserCreateEdit.aspx</DependentUpon>

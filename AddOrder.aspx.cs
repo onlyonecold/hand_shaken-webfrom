@@ -46,7 +46,11 @@ namespace hand_shaken_webform
                     Show_Option_Item(ice, Constant.OPTION_TYPE_ICE);
                 }
             }
+            
+
         }
+
+        
         protected void Add_Item(object sender, EventArgs e)
         {
             Button button = (Button)sender;
@@ -80,7 +84,7 @@ namespace hand_shaken_webform
                     }
                     else
                     {
-                        MessageBox.Show("請輸入數量", "溫馨提示");
+                        showResMessage("請輸入數量");
                     }
 
                 }
@@ -165,13 +169,14 @@ namespace hand_shaken_webform
                     myDatabase.execSQL(sqlstr);
                     addItems.Rows.Clear();
                     Show_Grid();
-                    DialogClass.MessageSimple("訂單已送出");
+                   
+                    showResMessage("訂單已送出");
                 }
                 
             }
             else
             {
-                DialogClass.MessageSimple("請選擇欲結帳的商品");
+                showResMessage("請選擇欲結帳的商品");
             }
 
         }
@@ -193,19 +198,12 @@ namespace hand_shaken_webform
             dropDownList.DataBind();
         }
 
-        protected void Show_Send_Back(object sender, EventArgs e)
+        protected void showResMessage(string message)
         {
-            int order_id = int.Parse(Order_Number.Text);
-            string sqlstr = " select o.order_id,o.create_time,sum(p.price) total from order_form o　";
-            sqlstr += "  join order_detail od on o.order_id = od.order_id  ";
-            sqlstr += "  join product p on p.prod_id = od.prod_id  ";
-            sqlstr += "  where o.order_id = "+ order_id;
-            sqlstr += "  group by o.order_id,o.create_time  ";
-            productTable = myDatabase.GetDataTable(sqlstr);
-            Send_Back_Grid.DataSource = productTable;
-            Send_Back_Grid.DataBind();
-
-
+            lblModalTitle.Text = "溫馨提醒";
+            lblModalBody.Text = message;
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "resMsgDialog", "$('#resMsgDialog').modal();", true);
+            resMsgModal.Update();
         }
 
         private DataTable Order_TempTable()

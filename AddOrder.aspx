@@ -167,7 +167,6 @@
                     </Columns>
                 </asp:GridView>
             </div>
-
             <div class="text-right">
                 <asp:Button CssClass="btn btn-danger" runat="server" type="button" style="width: 200px; height: 50px; margin-top: 5px" PostBackUrl="SendBackOrderView" Text="取消訂購單" />
                 <asp:Button Text="結帳" runat="server" CssClass="btn btn-success" Style="width: 200px; height: 50px; margin-top: 5px"  OnCommand="Submit_Order" />

@@ -39,6 +39,9 @@ namespace hand_shaken_webform
                     orderTable = myDatabase.GetDataTable(sqlstr);
                     Send_Back_Grid.DataSource = orderTable;
                     Send_Back_Grid.DataBind();
+                    orderTable.Rows.Clear();
+                    Order_Item_Detail_Grid.DataSource = orderTable;
+                    Order_Item_Detail_Grid.DataBind();
                     if (orderTable.Rows.Count == 0) 
                     {
                         //showResMessage("查詢失敗，單號已退單或不存在，請重新查詢。");
@@ -85,7 +88,7 @@ namespace hand_shaken_webform
             string sqlStr = "  select product.prod_ch_name,  " +
                             "  product.size,  " +
                             "  dbo.getOptionNameById(" + Constant.OPTION_TYPE_SUGER + ",sugur_type) as sugur,  " +
-                            "  dbo.getOptionNameById(" + Constant.OPTION_TYPE_ICE + ",ice_type)as ice,qty  from order_detail " +
+                            "  dbo.getOptionNameById(" + Constant.OPTION_TYPE_ICE + ",ice_type)as ice,qty ,product.price  from order_detail " +
                             "  join product on product.prod_id = order_detail.prod_id  " +
                             "  where order_detail.order_id =   " + order_id;
             orderTable = myDatabase.GetDataTable(sqlStr);

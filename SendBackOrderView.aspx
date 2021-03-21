@@ -22,6 +22,13 @@
                     AutoGenerateColumns="False" Width="100%" CellSpacing="5"
                     ForeColor="Black" GridLines="Both" HeaderStyle-Font-Bold="True" CssClass="table-bordered" EmptyDataText="查詢無資料" EmptyDataRowStyle-HorizontalAlign="Center">
                     <Columns>
+
+
+
+
+
+
+
                         <asp:TemplateField HeaderText="單號" HeaderStyle-Width="10%" ItemStyle-Width="20%" HeaderStyle-Font-Bold='false' HeaderStyle-BackColor="darkkhaki" HeaderStyle-Font-Size="15pt" HeaderStyle-CssClass="text-center" HeaderStyle-ForeColor="white">
                             <HeaderStyle Font-Bold="True" />
                             <ItemStyle HorizontalAlign='Center' VerticalAlign='Middle' BackColor="white" />

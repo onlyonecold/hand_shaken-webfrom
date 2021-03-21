@@ -8,7 +8,7 @@ namespace hand_shaken_webform
 {
     public class dbClass
     {
-        public SqlConnection myConn = new SqlConnection(@"Data Source=MSI\SQL2019;Database=hand_shaken;uid=sa;pwd=1qaz2wsx;");
+        public SqlConnection myConn = new SqlConnection(@"Data Source=DESKTOP-TA61HSO\MYSQL2019;Database=hand_shaken;uid=sa;pwd=87654321;");
         //DESKTOP-7VJ993H   localhost
         public SqlCommand myCmd = new SqlCommand();
         public void execSQL(string sqlstr)
